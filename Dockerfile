@@ -11,7 +11,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-ubuntu-java-bionic.list && \
     echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
     apt-get update && \
-    apt-get install -y --no-install-recommends oracle-java8-installer oracle-java8-set-default ca-certificates && \
+    apt-get install -y --no-install-recommends oracle-java8-installer oracle-java8-set-default ca-certificates curl && \
     apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log} && \
     mv /tmp/local_policy.jar ${JAVA_HOME}/jre/lib/security/ && \
     mv /tmp/US_export_policy.jar ${JAVA_HOME}/jre/lib/security/ && \
