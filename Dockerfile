@@ -1,23 +1,20 @@
 FROM ubuntu:18.04
 LABEL maintainer="Gary Feltham <gary.feltham@citypay.com>"
 
-COPY files/webupd8team_ubuntu_java.gpg /etc/apt/trusted.gpg.d/
-COPY files/local_policy.jar /tmp/
-COPY files/US_export_policy.jar /tmp/
+# COPY files/webupd8team_ubuntu_java.gpg /etc/apt/trusted.gpg.d/
+COPY files/*.jar /tmp/
 
-#ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 #RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-ubuntu-java-bionic.list && \
 #    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends openjdk-8-jre-headless && \
-#    apt-get install -y --no-install-recommends oracle-java8-installer oracle-java8-set-default && \
     apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log} && \
     echo $JAVA_HOME && \
     mv /tmp/local_policy.jar ${JAVA_HOME}/jre/lib/security/ && \
     mv /tmp/US_export_policy.jar ${JAVA_HOME}/jre/lib/security/ && \
-    rm /etc/apt/trusted.gpg.d/webupd8team_ubuntu_java.gpg && \
     cd ${JAVA_HOME} && rm -rf ./*src.zip \
            ./lib/missioncontrol \
            ./lib/visualvm \
