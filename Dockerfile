@@ -47,4 +47,6 @@ RUN apt-get update && \
            ./jre/lib/oblique-fonts \
            ./jre/lib/plugin.jar
 
+ADD https://get.aquasec.com/microscanner /
+RUN chmod +x /microscanner
 
