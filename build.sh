@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t citypay/java:1.8 .
+docker build --pull  -t citypay/java:1.8 .
 

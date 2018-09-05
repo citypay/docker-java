@@ -4,13 +4,19 @@ LABEL maintainer="Gary Feltham <gary.feltham@citypay.com>"
 # COPY files/webupd8team_ubuntu_java.gpg /etc/apt/trusted.gpg.d/
 COPY files/*.jar /tmp/
 
+ENV JAVA_VERSION=8u162
+ENV JAVA_UBUNTU_VERSION=8u162-b12-1
+
+ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 #RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-ubuntu-java-bionic.list && \
 #    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends openjdk-8-jre-headless && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates-java \
+        openjdk-8-jre-headless=$JAVA_UBUNTU_VERSION && \
     apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log} && \
     echo $JAVA_HOME && \
     mv /tmp/local_policy.jar ${JAVA_HOME}/jre/lib/security/ && \
@@ -45,8 +51,6 @@ RUN apt-get update && \
            ./jre/lib/ext/jfxrt.jar \
            ./jre/lib/ext/nashorn.jar \
            ./jre/lib/oblique-fonts \
-           ./jre/lib/plugin.jar
+           ./jre/lib/plugin.jar && java -version
 
-ADD https://get.aquasec.com/microscanner /
-RUN chmod +x /microscanner
 
