@@ -2,10 +2,13 @@ FROM ubuntu:18.04
 LABEL maintainer="Gary Feltham <gary.feltham@citypay.com>"
 
 # COPY files/webupd8team_ubuntu_java.gpg /etc/apt/trusted.gpg.d/
-COPY files/*.jar /tmp/
+COPY UnlimitedJCEPolicyJDK8/*.jar /tmp/
 
-ENV JAVA_VERSION=8u181
-ENV JAVA_UBUNTU_VERSION=8u181-b13-1ubuntu0.18.04.1
+ARG JAVA_VERSION
+ARG JAVA_UBUNTU_VERSION
+
+ENV JAVA_VERSION=1.8u191
+ENV JAVA_UBUNTU_VERSION=8u191-b12-2ubuntu0.18.04.1
 
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
