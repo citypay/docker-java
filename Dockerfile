@@ -7,8 +7,8 @@ COPY UnlimitedJCEPolicyJDK8/*.jar /tmp/
 ARG JAVA_VERSION
 ARG JAVA_UBUNTU_VERSION
 
-ENV JAVA_VERSION=1.8u191
-ENV JAVA_UBUNTU_VERSION=8u191-b12-2ubuntu0.18.04.1
+ENV JAVA_VERSION=1.8u222
+ENV JAVA_UBUNTU_VERSION=8u222-b10-1ubuntu1~18.04.1
 
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -17,6 +17,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 #    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
         ca-certificates-java curl \
         openjdk-8-jre-headless=$JAVA_UBUNTU_VERSION && \
