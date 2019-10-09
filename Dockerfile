@@ -18,7 +18,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        ca-certificates-java \
+        ca-certificates-java curl \
         openjdk-8-jre-headless=$JAVA_UBUNTU_VERSION && \
     apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log} && \
     echo $JAVA_HOME && \
