@@ -54,4 +54,3 @@ RUN apt-get update && \
            ./jre/lib/oblique-fonts \
            ./jre/lib/plugin.jar && java -version
 
-
