@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DOCKER_CONTENT_TRUST=1
+export DOCKER_CONTENT_TRUST=0
 VER=`curl -s https://packages.ubuntu.com/focal/amd64/openjdk-8-jre-headless | grep '<h1.*' | grep -ioE '8u[~a-z0-9.-]*'`
 BLD=`echo $VER | sed 's/\-.*//g'`
 
