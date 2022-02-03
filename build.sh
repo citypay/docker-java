@@ -8,8 +8,6 @@ echo "Building Docker Image for $VER:$BLD"
 
 export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=""
 
-docker trust key load delegation.key
-
 docker build --no-cache --pull \
     --build-arg JAVA_UBUNTU_VERSION=$VER \
     --build-arg JAVA_VERSION=$BLD \
