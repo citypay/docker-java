@@ -11,10 +11,10 @@ export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=""
 docker build --no-cache --pull \
     --build-arg JAVA_UBUNTU_VERSION=$VER \
     --build-arg JAVA_VERSION=$BLD \
-    -t citypay/java:1.8 \
-    -t citypay/java:1.$BLD . && \
-docker push citypay/java:1.8 && \
-docker push citypay/java:1.$BLD
+    -t garyfeltham/java:1.8 \
+    -t garyfeltham/java:1.$BLD . && \
+docker push garyfeltham/java:1.8 && \
+docker push garyfeltham/java:1.$BLD
 # && \
 #docker trust sign citypay/java:1.8 && \
 #docker trust sign citypay/java:1.$BLD

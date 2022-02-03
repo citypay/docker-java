@@ -5,6 +5,8 @@ on:
     branches: [ java8 ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron:  '23 4 * * 0'
 
 jobs:
 
