@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL maintainer="Gary Feltham <gary.feltham@citypay.com>"
 
 # COPY files/webupd8team_ubuntu_java.gpg /etc/apt/trusted.gpg.d/
